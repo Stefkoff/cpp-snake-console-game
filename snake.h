@@ -33,5 +33,7 @@ Snake* initSnake(int, int);
 Snake* createSnake(Snake*, sVect, int*);
 int isAtPos(Snake*, sVect);
 void moveSnake(Snake*, sVect);
+bool checkBite(Snake*);
+Snake* incr(Snake*);
 
 #endif //SNAKE_GAME_SNAKE_H
