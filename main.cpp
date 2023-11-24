@@ -38,26 +38,10 @@ char wait_for_input() {
     return c;
 }
 
-sVect generateDot(Snake* snake) {
-
-    // not need to srand, because it was already seeded at the initSnake function
-    int rX = (rand() % (MAX_X - 1));
-    int rY = (rand() % (MAX_Y - 1));
-
-    sVect pos;
-    pos.x = rX;
-    pos.y = rY;
-    if(isAtPos(snake, pos)) {
-        return generateDot(snake);
-    }
-
-    return pos;
-}
-
 int main() {
     Snake *snake = initSnake(MAX_X, MAX_Y);
 
-    sVect dot = generateDot(snake);
+    sVect dot = generateDot(snake, MAX_X, MAX_Y);
 
     while (1) {
         system("clear");
@@ -154,7 +138,7 @@ int main() {
         }
         if(isAtPos(snake, dot) == 1) {
             snake = incr(snake);
-            dot = generateDot(snake);
+            dot = generateDot(snake, MAX_X, MAX_Y);
         }
 
         usleep(400000);

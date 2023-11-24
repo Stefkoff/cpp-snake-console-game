@@ -36,5 +36,7 @@ void moveSnake(Snake*, sVect);
 bool checkBite(Snake*);
 Snake* incr(Snake*);
 void freeSnake(Snake* snake);
+int generateRandomNumber(int);
+sVect generateDot(Snake*, int, int);
 
 #endif //SNAKE_GAME_SNAKE_H

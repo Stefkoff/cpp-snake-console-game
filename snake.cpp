@@ -2,11 +2,23 @@
 
 #define SNAKE_DEFAULT_SIZE 9
 
+int generateRandomNumber(int max) {
+    return rand() % (max - 1);
+}
+
 Snake *initSnake(int maxX, int maxY) {
     srand(time(0));
 
-    int rX = (rand() % (maxX + 1));
-    int rY = (rand() % (maxY + 1));
+    // make sure that the snake + SNAKE_DEFAULT_SIZE does not go under 0
+    // because we will see a smaller snake at start
+    int rX = 0;
+    do {
+        rX = generateRandomNumber(maxX);
+    } while((rX - SNAKE_DEFAULT_SIZE) <= 0);
+    int rY = 0;
+    do {
+        rY = generateRandomNumber(maxY);
+    } while((rY + SNAKE_DEFAULT_SIZE) < maxY - 1);
 
     sVect pos;
     pos.x = rX;
@@ -87,4 +99,20 @@ void freeSnake(Snake* snake) {
     }
 
     delete(snake);
+}
+
+sVect generateDot(Snake* snake, int maxX, int maxY) {
+
+    // not need to srand, because it was already seeded at the initSnake function
+    int rX = generateRandomNumber(maxX);
+    int rY = generateRandomNumber(maxY);
+
+    sVect pos;
+    pos.x = rX;
+    pos.y = rY;
+    if(isAtPos(snake, pos)) {
+        return generateDot(snake, maxX, maxY);
+    }
+
+    return pos;
 }
