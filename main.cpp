@@ -20,7 +20,7 @@ char wait_for_input() {
     struct timeval tv{};
 
     tv.tv_sec = 0;
-    tv.tv_usec = 400000;
+    tv.tv_usec = 100000;
 
     FD_ZERO(&set);
     FD_SET(fileno(stdin), &set);
@@ -159,6 +159,8 @@ int main() {
 
         usleep(400000);
     }
+
+    freeSnake(snake);
 
     return 0;
 }

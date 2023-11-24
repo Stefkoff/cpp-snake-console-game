@@ -35,5 +35,6 @@ int isAtPos(Snake*, sVect);
 void moveSnake(Snake*, sVect);
 bool checkBite(Snake*);
 Snake* incr(Snake*);
+void freeSnake(Snake* snake);
 
 #endif //SNAKE_GAME_SNAKE_H

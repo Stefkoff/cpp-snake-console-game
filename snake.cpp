@@ -80,3 +80,11 @@ Snake* incr(Snake* snake) {
 
     return newSnake;
 }
+
+void freeSnake(Snake* snake) {
+    if(snake->next) {
+        freeSnake(snake->next);
+    }
+
+    delete(snake);
+}
