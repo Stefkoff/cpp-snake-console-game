@@ -4,6 +4,8 @@
 #include "snake.h"
 #include <termio.h>
 
+#include <iostream>
+
 #define MAX_X 50
 #define MAX_Y 13
 
@@ -59,8 +61,14 @@ int main() {
 
     sVect dot = generateDot(snake);
 
+    // setting scores
+    int score = 0;
+    int score_of_dot = 10;
+
     while (1) {
         system("clear");
+
+        std::cout << "Score: " << score << std::endl;
 
         for (int y = 0; y < MAX_Y; y++) {
             for (int x = 0; x < MAX_X; x++) {
@@ -155,6 +163,9 @@ int main() {
         if(isAtPos(snake, dot) == 1) {
             snake = incr(snake);
             dot = generateDot(snake);
+
+            // add score
+            score += score_of_dot;
         }
 
         usleep(400000);
