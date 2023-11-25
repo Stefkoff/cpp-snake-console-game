@@ -20,15 +20,20 @@ enum SnakeDirection {
 typedef struct {
     int x;
     int y;
-} sVect;
+} sVect; // position vector. TODO: maybe a better name will be good
 
 typedef struct S_Snake {
     sVect pos;
     SnakeDirection direction;
     struct S_Snake* next;
-} Snake;
+} Snake; // snake structure - it is like a queue
 
-
+/**
+ * This function will initialize the snake, based on the given default coordinates
+ * @param maxX - the maximum X coordinate
+ * @param maxY - the maximum Y coordinate
+ * @return - the snake
+ */
 Snake* initSnake(int, int);
 Snake* createSnake(Snake*, sVect, int*);
 int isAtPos(Snake*, sVect);
